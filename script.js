@@ -25,6 +25,7 @@ async function fecthPokemon() {
 
                     let p = document.createElement("p");
                     p.textContent = pokemonDetails.name;
+                    p.classList.add("p");
 
                     let numberId = document.createElement("p");
                     numberId.textContent = `#${pokemonDetails.id.toString().padStart(3, 0)}`;
@@ -36,14 +37,12 @@ async function fecthPokemon() {
                     LISTA_POKE.appendChild(container);
                 });
             })
-
-    } catch {
-        console.error("No se han cargado los recursos de la API");
+    } catch (error) {
+        console.error("No se han cargado los recursos de la API: ", error);
     }
 }
 
 
 fecthPokemon();
-
 
 
