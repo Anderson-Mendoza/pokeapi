@@ -56,6 +56,23 @@ function mostrarPokemon(pokemonArray) {
 
 }
 
+
+function buscarPokemon() {
+
+    const input = INPUT_BUSCAR.value;
+
+    const filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.includes(input));
+    console.log(filtrarPokemon)
+    mostrarPokemon(filtrarPokemon);
+
+}
+
+BTN_BUSCAR.addEventListener("click", () => {
+    buscarPokemon()
+    console.log("HAZ HECHO CLICK")
+});
+INPUT_BUSCAR.addEventListener("input", buscarPokemon);
+
 fetchPokemon()
 
 
