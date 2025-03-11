@@ -2,6 +2,7 @@ const URL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 const LISTA_POKE = document.getElementById("todos");
 const BTN_BUSCAR = document.getElementById("btn-buscar");
 const INPUT_BUSCAR = document.getElementById("input-buscar");
+const ERROR = document.getElementById('avisoError')
 
 
 let pokemonList = [];
@@ -20,16 +21,30 @@ async function fetchPokemon() {
 
         pokemonList = pokemonDetails
 
-        mostrarPokemon(pokemonList)
 
+        contarPaginas(pokemonList)
     } catch (error) {
         console.error("No se han cargado los recursos de la API", error);
 
     }
 }
 
+function contarPaginas(contarPagina) {
+
+    let limite = 10;
+    let desde = 0;
+    let paginas = contarPagina.length / limite;
+    let paginaActiva = 1;
+
+    let arreglo = contarPagina.slice(desde, limite);
+    console.log(arreglo);
+
+    mostrarPokemon(arreglo)
+}
 
 function mostrarPokemon(pokemonArray) {
+
+    LISTA_POKE.innerHTML = " "
 
     pokemonArray.forEach(pokemon => {
         const container = document.createElement("div");
@@ -62,20 +77,15 @@ function buscarPokemon() {
     const input = INPUT_BUSCAR.value;
 
     const filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.includes(input));
-    console.log(filtrarPokemon)
     mostrarPokemon(filtrarPokemon);
 
 }
 
-BTN_BUSCAR.addEventListener("click", () => {
-    buscarPokemon()
-    console.log("HAZ HECHO CLICK")
-});
+
+
 INPUT_BUSCAR.addEventListener("input", buscarPokemon);
 
+BTN_BUSCAR.addEventListener("click", buscarPokemon);
+
+
 fetchPokemon()
-
-
-
-
-
