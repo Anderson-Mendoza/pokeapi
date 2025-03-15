@@ -7,6 +7,7 @@ const BTN_ATRAS = document.getElementById("atras");
 const BTN_ADELANTE = document.getElementById("siguiente");
 
 let pokemonList = [];
+let filtrarPokemon = [];
 
 // LLamar a la API
 async function fetchPokemon() {
@@ -21,15 +22,24 @@ async function fetchPokemon() {
         );
 
         pokemonList = pokemonDetails
+        filtrarPokemon = pokemonList
 
-        mostrarPokemon(pokemonList)
-
+        mostrarPokemon(pokemonList);
 
     } catch (error) {
         console.error("No se han cargado los recursos de la API", error);
 
     }
 }
+
+//Filtrar pokemones
+function buscarPokemon() {
+    const input = INPUT_BUSCAR.value;
+
+    filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+    mostrarPokemon();
+}
+
 
 // variables paginador
 let elementosPorPagina = 10;
@@ -49,15 +59,15 @@ function retrocederPagina() {
     mostrarPokemon();
 }
 
-function obtenerRebanadaDeBaseDeDatos(pagina = 1) {
+function obtenerRebanadaDeBaseDeDatos() {
     const corteDeInicio = (paginaActual - 1) * elementosPorPagina;
     const corteDeFinal = corteDeInicio + elementosPorPagina;
-    return pokemonList.slice(corteDeInicio, corteDeFinal);
+    return filtrarPokemon.slice(corteDeInicio, corteDeFinal);
 
 }
 
 function obtenerPaginasTotales() {
-    return Math.ceil(pokemonList.length / elementosPorPagina);
+    return Math.ceil(filtrarPokemon.length / elementosPorPagina);
 }
 
 
@@ -80,16 +90,16 @@ function gestionarBotones() {
 
 
 
-// Mostrar elementos en el DOM
-function mostrarPokemon(pokemonArray) {
 
-    LISTA_POKE.innerHTML = " ";
-    const rebanadaDatos = obtenerRebanadaDeBaseDeDatos(paginaActual);
+// Mostrar elementos en el DOM
+function mostrarPokemon() {
+
+    LISTA_POKE.innerHTML = "";
+    const rebanadaDeDatos = obtenerRebanadaDeBaseDeDatos();
     gestionarBotones();
     INFO_PAGINA.textContent = `${paginaActual}/${obtenerPaginasTotales()}`;
 
-
-    rebanadaDatos.forEach(pokemon => {
+    rebanadaDeDatos.forEach(pokemon => {
         const container = document.createElement("div");
         container.classList.add("container-card-pokemon");
 
@@ -110,19 +120,14 @@ function mostrarPokemon(pokemonArray) {
         container.appendChild(numberId);
 
         LISTA_POKE.appendChild(container);
+
+
+
     });
 
-}
-
-// Filtrar pokemones
-function buscarPokemon() {
-
-    const input = INPUT_BUSCAR.value;
-
-    const filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.includes(input));
-    mostrarPokemon(filtrarPokemon);
 
 }
+
 
 
 // Eventos
@@ -134,3 +139,4 @@ BTN_ADELANTE.addEventListener("click", avanzarPagina);
 
 
 fetchPokemon()
+
