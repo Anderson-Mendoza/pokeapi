@@ -37,6 +37,7 @@ function buscarPokemon() {
     const input = INPUT_BUSCAR.value;
 
     filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+    paginaActual = 1
     mostrarPokemon();
 }
 
