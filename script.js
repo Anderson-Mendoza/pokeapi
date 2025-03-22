@@ -24,7 +24,7 @@ async function fetchPokemon() {
         pokemonList = pokemonDetails
         filtrarPokemon = pokemonList
 
-        mostrarPokemon(pokemonList);
+        mostrarPokemon();
 
     } catch (error) {
         console.error("No se han cargado los recursos de la API", error);
