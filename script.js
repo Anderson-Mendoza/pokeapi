@@ -7,7 +7,11 @@ const BTN_ATRAS = document.getElementById("atras");
 const BTN_ADELANTE = document.getElementById("siguiente");
 
 let pokemonList = [];
-let filtrarPokemon = [];
+let pokemonsFinded = null;
+
+// variables paginador
+let elementosPorPagina = 10;
+let paginaActual = 1;
 
 // LLamar a la API
 async function fetchPokemon() {
@@ -15,16 +19,13 @@ async function fetchPokemon() {
         const response = await fetch(URL);
         const data = await response.json();
 
-        const pokemonDetails = await Promise.all(data.results.map(async (poke) => {
+        pokemonList = await Promise.all(data.results.map(async (poke) => {
             const response = await fetch(poke.url)
             return response.json()
         })
         );
 
-        pokemonList = pokemonDetails
-        filtrarPokemon = pokemonList
-
-        mostrarPokemon();
+        seccionarPokemos()
 
     } catch (error) {
         console.error("No se han cargado los recursos de la API", error);
@@ -36,39 +37,31 @@ async function fetchPokemon() {
 function buscarPokemon() {
     const input = INPUT_BUSCAR.value;
 
-    filtrarPokemon = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+    pokemonsFinded = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
     paginaActual = 1
-    mostrarPokemon();
+    mostrarPokemon(pokemonsFinded);
 }
-
-
-// variables paginador
-let elementosPorPagina = 10;
-let paginaActual = 1;
-
 
 
 function avanzarPagina() {
     paginaActual = paginaActual + 1;
-
-    mostrarPokemon();
+    seccionarPokemos();
 }
 
 function retrocederPagina() {
     paginaActual = paginaActual - 1;
-
-    mostrarPokemon();
+    seccionarPokemos();
 }
 
-function obtenerRebanadaDeBaseDeDatos() {
+function seccionarPokemos() {
     const corteDeInicio = (paginaActual - 1) * elementosPorPagina;
     const corteDeFinal = corteDeInicio + elementosPorPagina;
-    return filtrarPokemon.slice(corteDeInicio, corteDeFinal);
+    mostrarPokemon(pokemonList.slice(corteDeInicio, corteDeFinal));
 
 }
 
 function obtenerPaginasTotales() {
-    return Math.ceil(filtrarPokemon.length / elementosPorPagina);
+    return Math.ceil(pokemonList.length / elementosPorPagina);
 }
 
 
@@ -90,17 +83,14 @@ function gestionarBotones() {
 
 
 
-
-
 // Mostrar elementos en el DOM
-function mostrarPokemon() {
+function mostrarPokemon(pokemons) {
 
     LISTA_POKE.innerHTML = "";
-    const rebanadaDeDatos = obtenerRebanadaDeBaseDeDatos();
     gestionarBotones();
     INFO_PAGINA.textContent = `${paginaActual}/${obtenerPaginasTotales()}`;
 
-    rebanadaDeDatos.forEach(pokemon => {
+    pokemons.forEach(pokemon => {
         const container = document.createElement("div");
         container.classList.add("container-card-pokemon");
 
@@ -122,13 +112,8 @@ function mostrarPokemon() {
 
         LISTA_POKE.appendChild(container);
 
-
-
     });
-
-
 }
-
 
 
 // Eventos
@@ -140,4 +125,3 @@ BTN_ADELANTE.addEventListener("click", avanzarPagina);
 
 
 fetchPokemon()
-
