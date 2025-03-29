@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>Pokeapi</title>
 </head>
@@ -12,18 +15,20 @@
     
         <h1>Lista pokemon</h1>
     
-    <form action="" class="buscar-poke">
-        <input class="input" type="text" placeholder="Buscar pokemon">
-        <input class="btn-buscar" type="submit" value="Buscar">
-    </form>
+    <div class="buscar-poke">
+        <input id="input-buscar" class="input" type="text" placeholder="Buscar pokemon">
+        <button id="btn-buscar" class="btn-buscar"> Buscar </button>
+    </div>
 
 </header>
 <main>
-
-
-<div id="todos" class="container-pokemons">
-       
-</div>    
+    <div>
+        <button id="atras"  > &#x1F448; </button>
+        <span id="informacion-pagina"></span>
+        <button id="siguiente"> &#x1F449; </button>
+    </div>
+    
+<div id="todos" class="container-pokemons"></div>  
 
 </main>
 <footer></footer>
