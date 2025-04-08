@@ -2,7 +2,7 @@
   "name": "pokeapi",
   "version": "1.0.0",
   "description": "pokeapi",
-  "main": "script.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node src/script.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "Anderson-Mendoza"
+    "url": "https://github.com/Anderson-Mendoza/pokeapi"
   },
   "author": "Anderson Mendoza",
   "license": "ISC",

@@ -1,14 +1,11 @@
-import mostrarPokemon from "../script";
-import pokemonList from "./api";
-import INPUT_BUSCAR from "./constantes";
-
-let pokemonsFinded = null;
+import { INPUT_BUSCAR } from "./constantes.js";
+import { pokemonList } from "./api.js";
+import { mostrarPokemon } from "./mostrarPokemon.js";
 
 export function buscarPokemon() {
     const input = INPUT_BUSCAR.value;
 
-    pokemonsFinded = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
-    paginaActual = 1
-    mostrarPokemon();
+    const pokemonsFinded = pokemonList.filter(pokemon => pokemon.name.toLowerCase().includes(input));
+    mostrarPokemon(pokemonsFinded)
 }
 

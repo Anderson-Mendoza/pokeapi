@@ -1,5 +1,6 @@
-import { seccionarPokemons } from "./paginacion";
-const URL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+import { seccionarPokemons } from "./paginacion.js";
+
+export const URL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
 export let pokemonList = [];
 
@@ -22,5 +23,4 @@ export async function fetchPokemon() {
     }
 }
 
-fetchPokemon()
 

@@ -1,7 +1,5 @@
-import { avanzarPagina, retrocederPagina, obtenerPaginasTotales } from './paginacion.js';
-import { BTN_BUSCAR, INPUT_BUSCAR, BTN_ATRAS, BTN_ADELANTE } from './constantes.js';
-import { buscarPokemon } from './buscarPokemon.js';
-
+import { BTN_ADELANTE, BTN_ATRAS } from "./constantes.js";
+import { paginaActual, obtenerPaginasTotales } from "./paginacion.js";
 
 export function gestionarBotones() {
     // Comprobar que no se pueda retroceder
@@ -18,11 +16,3 @@ export function gestionarBotones() {
         BTN_ADELANTE.removeAttribute("disabled");
     }
 }
-
-
-// Eventos
-INPUT_BUSCAR.addEventListener("input", buscarPokemon);
-BTN_BUSCAR.addEventListener("click", buscarPokemon);
-
-BTN_ATRAS.addEventListener("click", retrocederPagina);
-BTN_ADELANTE.addEventListener("click", avanzarPagina);

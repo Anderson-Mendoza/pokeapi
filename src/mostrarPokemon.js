@@ -1,11 +1,9 @@
-import { LISTA_POKE, INFO_PAGINA } from './constantes.js';
-import { obtenerPaginasTotales } from './paginacion.js';
-import { gestionarBotones } from './eventos.js';
-import { pokemonList } from './api.js';
+import { LISTA_POKE, INFO_PAGINA } from "./constantes.js";
+import { gestionarBotones } from "./eventos.js";
+import { obtenerPaginasTotales, paginaActual } from "./paginacion.js";
 
-pokemons = pokemonList;
 // Mostrar elementos en el DOM
-export function mostrarPokemon() {
+export function mostrarPokemon(pokemons) {
 
     LISTA_POKE.innerHTML = "";
     gestionarBotones();
@@ -35,6 +33,3 @@ export function mostrarPokemon() {
 
     });
 }
-
-
-export default mostrarPokemon
