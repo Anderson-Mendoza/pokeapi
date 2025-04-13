@@ -1,5 +1,5 @@
 import { LISTA_POKE, INFO_PAGINA } from "./constantes.js";
-import { gestionarBotones } from "./eventos.js";
+import { gestionarBotones } from "./gestionarBotones.js";
 import { obtenerPaginasTotales, paginaActual } from "./paginacion.js";
 
 // Mostrar elementos en el DOM
