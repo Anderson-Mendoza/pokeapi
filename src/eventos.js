@@ -3,18 +3,18 @@ import { buscarPokemon } from "./buscarPokemon.js";
 import { retrocederPagina, avanzarPagina } from "./paginacion.js";
 
 
-INPUT_BUSCAR.addEventListener("input", () => {
-
-    buscarPokemon()
-}
-);
-BTN_BUSCAR.addEventListener("click", () => {
-    buscarPokemon()
-    console.log("haz hecho click")
+export function eventoInput() {
+    INPUT_BUSCAR.addEventListener("input", buscarPokemon);
 }
 
-);
+export function eventoBtnBuscar() {
+    BTN_BUSCAR.addEventListener("click", buscarPokemon);
+}
 
-BTN_ATRAS.addEventListener("click", retrocederPagina);
-BTN_ADELANTE.addEventListener("click", avanzarPagina);
+export function eventoBtnAtras() {
+    BTN_ATRAS.addEventListener("click", retrocederPagina);
+}
 
+export function eventoBtnAdelante() {
+    BTN_ADELANTE.addEventListener("click", avanzarPagina);
+}
