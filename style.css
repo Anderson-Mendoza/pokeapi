@@ -74,3 +74,16 @@ header {
   border: none;
   border-radius: 5px;
 }
+
+.filtro-tipo {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.filtro-tipo:hover {
+  background-color: #f0f0f0;
+}

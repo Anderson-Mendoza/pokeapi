@@ -1,7 +1,7 @@
 import { mostrarPokemon } from "./mostrarPokemon.js"
 import { pokemonList } from "./api.js";
 
-const elementosPorPagina = 10;
+const elementosPorPagina = 12;
 export let paginaActual = 1;
 
 export function avanzarPagina() {

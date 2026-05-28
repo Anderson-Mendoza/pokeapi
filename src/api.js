@@ -1,6 +1,7 @@
 import { seccionarPokemons } from "./paginacion.js";
+import { llenarSelectorTipos } from "./filtroTipo.js";
 
-export const URL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+export const URL = "https://pokeapi.co/api/v2/pokemon/?limit=180";
 
 export let pokemonList = [];
 
@@ -15,6 +16,7 @@ export async function fetchPokemon() {
         })
         );
 
+        llenarSelectorTipos();
         seccionarPokemons();
 
     } catch (error) {
