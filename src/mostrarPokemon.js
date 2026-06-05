@@ -18,15 +18,16 @@ export function mostrarPokemon(pokemons) {
         img.alt = pokemon.name;
         img.classList.add("container-img");
 
-        const p = document.createElement("p");
-        p.textContent = pokemon.name;
-        p.classList.add("p");
+        const nombrePokemon = document.createElement("p");
+        nombrePokemon.textContent = pokemon.name;
+        nombrePokemon.classList.add("nombre-pokemon");
 
         const numberId = document.createElement("p");
         numberId.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+        numberId.classList.add("number-id");
 
         container.appendChild(img);
-        container.appendChild(p);
+        container.appendChild(nombrePokemon);
         container.appendChild(numberId);
 
         LISTA_POKE.appendChild(container);
