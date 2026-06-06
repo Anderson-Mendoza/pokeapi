@@ -5,6 +5,49 @@
   font-family: sans-serif;
 }
 
+.pokemon-logo {
+  width: 15rem;
+  margin: 0;
+}
+
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pokeball {
+  width: 45px;
+  height: 60px;
+  animation: bounce 0.4s linear infinite alternate;
+}
+
+/* header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+} */
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(10%);
+  }
+}
+
+h1 {
+  color: #f1f1f1;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+}
+
 img {
   width: 100%;
   max-width: 10rem;
@@ -67,7 +110,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 40px 0 40px;
+  margin: 0;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
 }
