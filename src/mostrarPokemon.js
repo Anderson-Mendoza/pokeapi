@@ -13,6 +13,10 @@ export function mostrarPokemon(pokemons) {
         const container = document.createElement("div");
         container.classList.add("container-card-pokemon");
 
+        const numberId = document.createElement("p");
+        numberId.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+        numberId.classList.add("number-id");
+
         const img = document.createElement("img");
         img.src = pokemon.sprites.other["official-artwork"].front_default;
         img.alt = pokemon.name;
@@ -22,13 +26,19 @@ export function mostrarPokemon(pokemons) {
         nombrePokemon.textContent = pokemon.name;
         nombrePokemon.classList.add("nombre-pokemon");
 
-        const numberId = document.createElement("p");
-        numberId.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
-        numberId.classList.add("number-id");
+        const tipoPokemon = document.createElement("p");
+        tipoPokemon.textContent = `Tipo: ${pokemon.types.map(tipo => tipo.type.name).join(" / ")}`;
+        tipoPokemon.classList.add("tipo-pokemon");
 
-        container.appendChild(img);
-        container.appendChild(nombrePokemon);
+        const pokemonInfo = document.createElement("div");
+        pokemonInfo.classList.add("pokemon-info");
+        pokemonInfo.appendChild(nombrePokemon);
+        pokemonInfo.appendChild(tipoPokemon);
+
         container.appendChild(numberId);
+        container.appendChild(img);
+        container.appendChild(pokemonInfo);
+
 
         LISTA_POKE.appendChild(container);
 

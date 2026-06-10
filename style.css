@@ -71,6 +71,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 32px;
   background-color: #ccc;
+  border: 1px solid grey;
   border-radius: 10px;
   cursor: pointer;
   padding: 10px;
@@ -86,6 +87,18 @@ img {
 
 .container-card-pokemon img:hover {
   transform: scale(1.5);
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tipo-pokemon {
+  margin-top: 4px;
+  color: #333;
+  font-size: 16px;
 }
 
 p {
